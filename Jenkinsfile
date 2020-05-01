@@ -12,7 +12,7 @@ pipeline {
 				sh 'tidy -q -e *.html'
 			}
 		}
-		
+
 		stage('Build Docker Image') {
             		steps {
                 		script {
@@ -37,7 +37,7 @@ pipeline {
         	stage('Deploy blue & Green container') {
             		steps {
                           sshagent(['capstone']) {
-                             sh "scp -o StrictHostKeyChecking=no  blueController.yaml greenController.yaml blueService.yaml ubuntu@34.215.195.151"
+                             sh "scp -o StrictHostKeyChecking=no  blueController.yaml greenController.yaml blueService.yaml ubuntu@34.215.195.151:/home/ubuntu"
                              script{
                                 try{
 	                            sh "ssh ubuntu@34.215.195.151 sudo kubectl apply -f ."
@@ -58,7 +58,7 @@ pipeline {
                 stage('Create the service in the cluster, redirect to green') {
                         steps {
                           sshagent(['capstone']) {
-                             sh "scp -o StrictHostKeyChecking=no  greenService.yaml ubuntu@34.215.195.151"
+                             sh "scp -o StrictHostKeyChecking=no  greenService.yaml ubuntu@34.215.195.151:/home/ubuntu"
                              script{
                                 try{
 	                            sh "ssh ubuntu@34.215.195.151 kubectl apply -f ."
