@@ -42,7 +42,7 @@ pipeline {
                                 try {
 	                            sh "StrictHostKeyChecking=no ssh ubuntu@34.215.195.151 kubectl apply -f ."
 	                     }catch(error){
-	                            sh "StrictHostKeyChecking=no ssh ubuntu@34.215.195.151 kubectl create -f "
+	                            sh "StrictHostKeyChecking=no ssh ubuntu@34.215.195.151 kubectl create -f ."
                                           }
                             }
                          }
