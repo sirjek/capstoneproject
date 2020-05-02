@@ -40,9 +40,9 @@ pipeline {
                              sh "scp -o StrictHostKeyChecking=no  blueController.yaml greenController.yaml blueServices.yaml ubuntu@34.215.195.151:/home/ubuntu"
                              script{
                                 try {
-	                            sh "StrictHostKeyChecking=no ssh ubuntu@34.215.195.151 kubectl apply -f ."
+	                            sh "StrictHostKeyChecking=no ssh ubuntu@34.215.195.151"
 	                     }catch(error){
-	                            sh "StrictHostKeyChecking=no ssh ubuntu@34.215.195.151 kubectl create -f ."
+	                            sh "StrictHostKeyChecking=no ssh ubuntu@34.215.195.151"
                                           }
                             }
                          }
