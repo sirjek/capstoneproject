@@ -37,7 +37,7 @@ pipeline {
         	stage('Deploy blue & Green container') {
             		steps {
                           sshagent(['capstone']) {
-                             sh "scp -o StrictHostKeyChecking=no  blueController.yaml greenController.yaml blueServices.yaml ubuntu@34.215.195.151:/home/ubuntu"
+                             sh "scp -o StrictHostKeyChecking=no  blueController.yaml greenController.yaml blueServices.yml ubuntu@34.215.195.151:/home/ubuntu"
                              script{
                                 try{
 	                            sh "ssh ubuntu@34.215.195.151 sudo kubectl apply -f ."
