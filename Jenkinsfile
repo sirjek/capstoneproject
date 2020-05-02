@@ -61,9 +61,9 @@ pipeline {
                              sh "scp -o StrictHostKeyChecking=no  greenService.yaml ubuntu@34.215.195.151:/home/ubuntu"
                              script{
                                 try{
-	                            sh "ssh ubuntu@34.215.195.151 kubectl apply -f ."
+	                            sh "ssh ubuntu@34.215.195.151"
 	                     }catch(error){
-	                            sh "ssh ubuntu@34.215.195.151 kubectl create -f ."
+	                            sh "ssh ubuntu@34.215.195.151 "
                                           }
                             }
                          }
