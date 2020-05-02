@@ -40,9 +40,9 @@ pipeline {
                              sh "scp -o StrictHostKeyChecking=no  blueController.yaml greenController.yaml blueServices.yaml ubuntu@34.215.195.151:/home/ubuntu"
                              script{
                                 try{
-	                            sh "ssh ubuntu@34.215.195.151 sudo kubectl apply -f ."
+	                            sh "ssh ubuntu@34.215.195.151 kubectl apply -f ."
 	                     }catch(error){
-	                            sh "ssh ubuntu@34.215.195.151 sudo kubectl create -f ."
+	                            sh "ssh ubuntu@34.215.195.151 kubectl create -f ."
                                           }
                             }
                          }
@@ -63,7 +63,7 @@ pipeline {
                                 try{
 	                            sh "ssh ubuntu@34.215.195.151 kubectl apply -f ."
 	                     }catch(error){
-	                            sh "ssh ubuntu@34.215.195.151 sudo kubectl create -f ."
+	                            sh "ssh ubuntu@34.215.195.151 kubectl create -f ."
                                           }
                             }
                          }
