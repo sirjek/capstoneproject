@@ -36,10 +36,10 @@ pipeline {
 
         	stage('Deploy blue & Green container') {
             		steps {
-                          sshagent(['capstone']) {
+                          sshagent(['capstone'],(credentials:"aws")) {
                              sh "scp -o StrictHostKeyChecking=no  blueController.yaml greenController.yaml blueServices.yaml ubuntu@34.215.195.151:/home/ubuntu"
                              script{
-                                try (credentials:"aws"){
+                                try {
 	                            sh "ssh ubuntu@34.215.195.151 kubectl apply -f ."
 	                     }catch(error){
 	                            sh "ssh ubuntu@34.215.195.151 kubectl create -f ."
