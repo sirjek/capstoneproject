@@ -36,7 +36,7 @@ pipeline {
 
         	stage('Deploy blue & Green container') {
             		steps {
-                          sshagent(['capstone'],(credentials:"aws")) {
+                          sshagent(['capstone'],credentials:"aws") {
                              sh "scp -o StrictHostKeyChecking=no  blueController.yaml greenController.yaml blueServices.yaml ubuntu@34.215.195.151:/home/ubuntu"
                              script{
                                 try {
