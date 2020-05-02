@@ -1,9 +1,9 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: LoadBalancer
+  name: loadbalancer
   labels:
-    app: LoadBalancer
+    app: loadbalancer
 spec:
   ports:
   - port: 8000
