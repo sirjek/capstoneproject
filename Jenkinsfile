@@ -37,10 +37,16 @@ pipeline {
         	stage('Deploy blue & Green container') {
             		steps {
                           sshagent(['capstone']) {
+<<<<<<< HEAD
                              sh "scp -o StrictHostKeyChecking=no  blueController.yaml greenController.yaml blueServices.yaml ubuntu@34.215.195.151:/home/ubuntu"
+||||||| merged common ancestors
+                             sh "scp -o StrictHostKeyChecking=no  blueController.yaml greenController.yaml blueService.yaml ubuntu@34.215.195.151:/home/ubuntu"
+=======
+                             sh "scp -o StrictHostKeyChecking=no  blueController.yaml greenController.yaml blueServices.yml ubuntu@34.215.195.151:/home/ubuntu"
+>>>>>>> e0443e3d5f9a9adfa9884418997e79166148cab5
                              script{
                                 try{
-	                            sh "ssh ubuntu@34.215.195.151 sudo kubectl apply -f ."
+	                            sh "ssh ubuntu@34.215.195.151 sudo kubectl apply -f ./blueServices.yml"
 	                     }catch(error){
 	                            sh "ssh ubuntu@34.215.195.151 sudo kubectl create -f ."
                                           }
